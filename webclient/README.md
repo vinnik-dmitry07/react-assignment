@@ -3,11 +3,15 @@
 ## To get started
 
 ```
-cd ./web-client
+cd ./webclient
 npm install
 ```
 
 ## To test the app
+
+```
+npm run start
+```
 
 Open http://localhost:3000/ in your browser.
 

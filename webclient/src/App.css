@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.drawn-cards-container {
+  max-height: 100px;
+  overflow-y: auto;
+}

@@ -9,6 +9,7 @@
     "@apollo/client": "3.7.17",
     "@apollo/server": "4.7.5",
     "graphql": "16.7.1",
+    "graphql-subscriptions": "^2.0.0",
     "invariant": "2.2.4"
   },
   "devDependencies": {
