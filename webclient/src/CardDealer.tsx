@@ -6,16 +6,15 @@ import {DRAW_CARD, GET_GAME_STATE, ON_CARD_DRAWN, RESET_GAME} from './queries';
 const CardDealer: React.FC = () => {
     const {data, loading, error, refetch} = useQuery(GET_GAME_STATE);
     const [drawCard] = useMutation(DRAW_CARD);
-    const {data: subscriptionData} = useSubscription(ON_CARD_DRAWN);
+    const { data: subscriptionData, error: subscriptionError} = useSubscription(ON_CARD_DRAWN);
     const [player, setPlayer] = React.useState<'PlayerA' | 'PlayerB' | null>(null);
     const [resetGame] = useMutation(RESET_GAME);
     const drawnCardsRef = useRef(null);
 
     useEffect(() => {
-        console.log('123');
         if (subscriptionData) {
             console.log('New Data Received', subscriptionData.onCardDrawn);
-            refetch();
+            void refetch();
         }
     }, [subscriptionData, refetch]);
 
@@ -25,6 +24,12 @@ const CardDealer: React.FC = () => {
             element.scrollTop = element.scrollHeight;
         }
     }, [data]);
+
+    useEffect(() => {
+        if (subscriptionError) {
+            console.error('Subscription error:', subscriptionError);
+        }
+    }, [subscriptionError]);
 
     const handleDrawCard = async () => {
         await drawCard({ variables: { player } });

@@ -8,9 +8,12 @@
   "dependencies": {
     "@apollo/client": "3.7.17",
     "@apollo/server": "4.7.5",
+    "@graphql-tools/schema": "^10.0.0",
     "graphql": "16.7.1",
     "graphql-subscriptions": "^2.0.0",
-    "invariant": "2.2.4"
+    "graphql-ws": "^5.14.0",
+    "invariant": "2.2.4",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "@types/invariant": "2.2.35",

@@ -30,6 +30,7 @@ export const typeDefs = `#graphql
     }
 `;
 
+// noinspection JSUnusedGlobalSymbols
 export const resolvers = {
     Query: {
         getGameState: () => gameState,
@@ -71,7 +72,7 @@ export const resolvers = {
             gameState.currentPlayer = gameState.currentPlayer === 'PlayerA' ? 'PlayerB' : 'PlayerA';
 
             // Publish the updated game state
-            pubSub.publish(CARD_DRAWN, {onCardDrawn: gameState});
+            void pubSub.publish(CARD_DRAWN, {onCardDrawn: gameState});
 
             return gameState;
         },
