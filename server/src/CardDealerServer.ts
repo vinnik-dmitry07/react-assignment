@@ -65,7 +65,6 @@ export const resolvers = {
             const len = gameState.drawnCards.length;
             if (len >= 2 && gameState.drawnCards[len - 1].rank === gameState.drawnCards[len - 2].rank) {
                 gameState.gameState = 'won';
-                return gameState;
             }
 
             // Update the current player
@@ -78,6 +77,7 @@ export const resolvers = {
         },
         resetGame: () => {
             resetGameState();
+            void pubSub.publish(CARD_DRAWN, {onCardDrawn: gameState});
             return gameState;
         },
     },
